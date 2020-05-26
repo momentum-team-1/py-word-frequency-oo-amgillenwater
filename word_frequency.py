@@ -7,32 +7,39 @@ STOP_WORDS = [
 
 class FileReader:
     def __init__(self, filename):
-        pass
+        self.filename = filename
+        self.passage = self.read_contents()
 
     def read_contents(self):
         """
         This should read all the contents of the file
         and return them as one string.
         """
-        raise NotImplementedError("FileReader.read_contents")
-
+        # raise NotImplementedError("FileReader.read_contents")
+        open_file = open(self.filename)
+        text = open_file.read()
+        open_file.close()
+        return text
+        
 
 class WordList:
     def __init__(self, text):
-        pass
+        self.words = text
+        self.extract = self.extract_words()
 
     def extract_words(self):
         """
         This should get all words from the text. This method
         is responsible for lowercasing all words and stripping
-        them of punctuation.
+        them of punctuation--will not return
         """
-        raise NotImplementedError("WordList.extract_words")
+        words = self.words.lower()
+        separated_words = words.split()
 
     def remove_stop_words(self):
         """
         Removes all stop words from our word list. Expected to
-        be run after extract_words.
+        be run after extract_words--will not return
         """
         raise NotImplementedError("WordList.remove_stop_words")
 

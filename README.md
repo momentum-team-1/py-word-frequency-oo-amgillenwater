@@ -10,3 +10,9 @@ A starting program is located in `word_frequency.py`. This program contains 3 cl
 
 You may create another class for the word frequencies (referenced in `WordList.get_freqs`), use a dictionary, or another data structure of your choice.
 
+To calculate the frequency of words, you must:
+
+- remove punctuation
+- normalize all words to lowercase
+- remove "stop words" -- words used so frequently they are ignored
+- go through the file word by word and keep a count of how often each word is used
