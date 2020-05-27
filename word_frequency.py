@@ -55,12 +55,15 @@ class WordList:
         extract_words and remove_stop_words. The data structure
         could be a dictionary or another type of object.
         """
-        raise NotImplementedError("WordList.get_freqs")
+        freqs = {}
+        for item in self.new_list:
+            freqs[item] = freqs.get(item, 0) + 1
+        return freqs
 
 
 class FreqPrinter:
     def __init__(self, freqs):
-        pass
+        self.freqs = freqs
 
     def print_freqs(self):
         """
