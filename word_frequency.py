@@ -25,7 +25,7 @@ class FileReader:
 class WordList:
     def __init__(self, text):
         self.words = text
-        self.extract = self.extract_words()
+        # self.extract = self.extract_words()
 
     def extract_words(self):
         """
@@ -35,13 +35,18 @@ class WordList:
         """
         words = self.words.lower()
         separated_words = words.split()
+        self.separated_words = separated_words
 
     def remove_stop_words(self):
         """
         Removes all stop words from our word list. Expected to
         be run after extract_words--will not return
         """
-        raise NotImplementedError("WordList.remove_stop_words")
+        new_list = []
+        for word in self.separated_words:
+            if not word in STOP_WORDS:
+                new_list.append(word)
+        self.new_list = new_list
 
     def get_freqs(self):
         """
