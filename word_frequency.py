@@ -82,8 +82,12 @@ class FreqPrinter:
        rights | 6    ******
         right | 6    ******
         """
-        raise NotImplementedError("FreqPrinter.print_freqs")
-
+        sorted_word_freqs = sorted(self.freqs.items(), key=lambda seq: seq[1], reverse=True)
+        words_to_display = [freq[0] for freq in sorted_word_freqs[:10]]
+        longest_word_length = max([len(word) for word in words_to_display])
+        for word, count in sorted_word_freqs[:10]:
+            print(word.rjust(longest_word_length + 1), "|",
+                str(count).ljust(4), "*" * count)
 
 if __name__ == "__main__":
     import argparse
